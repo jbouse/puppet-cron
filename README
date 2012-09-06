@@ -1,0 +1,26 @@
+# puppet-cron
+
+Manage task schedulation via Puppet on UNIX systems.
+The schedulation can be custom (via cron::task) or rely on the cron-provided shortcuts (cron::hourly, cron::daily, cron::weekly and cron::monthly).
+
+## How to use
+
+### Classic task schedulation
+
+```
+  cron::task{ 'cleaning':
+    command => '/path/to/cleaning_script.sh',
+    minute  => '0'
+  }
+```
+
+### Daily task (hourly, weekly, monthly) schedulation
+
+```
+  cron::daily{ 'backup':
+    command => '/path/to/backup_script.sh'
+  }
+```
+### TODO
+- Set up and install cron in the - very unlikely - case that it's not installed;
+- Make cron::task work with windows.
