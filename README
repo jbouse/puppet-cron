@@ -5,7 +5,7 @@ The schedulation can be custom (via cron::task) or rely on the cron-provided sho
 
 ## How to use
 
-### Classic task schedulation
+### Classic task scheduling
 
 ```
   cron::task{ 'cleaning':
