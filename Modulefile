@@ -1,5 +1,5 @@
 name 'puppet-cron'
-version '0.0.1'
+version '0.1.0'
 
 author '5Ub-Z3r0'
 license 'GPL v3'
