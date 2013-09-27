@@ -40,10 +40,12 @@
 #
 # === Authors
 #
-# 5Ub-Z3r0
+# 5Ub-Z3r0, Jeremy T. Bouse
 #
 define cron::task(
   $ensure   = 'present',
+  $user     = 'root',
+  $special  = undef,
   $command  = undef,
   $minute   = '*',
   $hour     = '*',
@@ -55,26 +57,11 @@ define cron::task(
 
   validate_absolute_path($command)
 
-  if !($minute == '*' or ($minute >= 0 and $minute <= 59)) {
-    fail('Specify a minute in the range 0-59')
-  }
-  if !($hour == '*' or ($hour >= 0 and $hour <= 23)) {
-    fail('Specify an hour in the range 0-23')
-  }
-  if !($monthday == '*' or ($monthday >= 1 and $monthday <= 31)) {
-    fail('Specify a day of month in the range 1-31')
-  }
-  if !($month == '*' or ($month >= 1 and $month <= 12)) {
-    fail('Specify a month in the range 1-12')
-  }
-  if !($weekday == '*' or ($weekday >= 0 and $weekday <= 6)) {
-    fail('Specify a day of week in the range 0-6')
-  }
-
   cron { $name:
     ensure   => $ensure,
     command  => $command,
-    user     => 'root',
+    user     => $user,
+    special  => $special,
     minute   => $minute,
     hour     => $hour,
     month    => $month,
