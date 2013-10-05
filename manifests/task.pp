@@ -55,8 +55,6 @@ define cron::task(
 ) {
   include cron
 
-  validate_absolute_path($command)
-
   cron { $name:
     ensure   => $ensure,
     command  => $command,
